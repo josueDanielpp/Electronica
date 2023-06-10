@@ -57,12 +57,13 @@ export class FijaComponent {
   calcularForm1():void{
     // Calcular corriente de IB:
     this.ib = (this.vcc-0.7)/(this.rb*1000);
+    this.ib *=1000000; 
 
     // Calcular corriente de IC:
     this.ic = this.beta*this.ib;
-
+    this.ic/=1000;
     // Calcular VCE
-    this.vce = this.vcc - (this.rc*1000*this.ic);
+    this.vce = this.vcc - (this.rc*this.ic);
 
     // Calcular VRC
     this.vrc = this.vcc - this.vce;
@@ -87,8 +88,7 @@ export class FijaComponent {
     this.rc = this.vrc/(this.ic/1000);
     this.rc/=1000; // Convertir a Kilo-Ohms
 
-    this.vcc= this.vrb;
-    this.vcc+=0.7;
+    this.vcc= this.vrc + this.vce;
 
     this.beta = (this.ic/1000)/(this.ib/1000000);
   }
