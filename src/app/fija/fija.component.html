@@ -1,1 +1,116 @@
-<p>fija works!</p>
+<div id="DivSelect">
+    <select #transistor class="form-select" aria-label="Default select example">
+        <option selected value="MPS2222">Transistor MPS2222</option>
+        <option value="TIP41">Transistor TIP41</option>
+        <option value="BC547">Transistor BC547</option>
+    </select>
+
+    <div class="col-12">
+        <button (click)="reset()" type="submit" class="btn btn-primary">Limpiar</button>
+    </div>
+
+</div>
+
+<div class="card-group">
+
+    <div class="card">
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
+                    style="color: #3c5786;"></i></span>
+            <div class="form-floating">
+                <input [(ngModel)]="vcc" (click)="desactivarFormulario(1)" [disabled]="!form1Habilitado" type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de Vcc (V)</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-water fa-lg"></i></span>
+            <div class="form-floating">
+                <input [(ngModel)]="rb" (click)="desactivarFormulario(1)" [disabled]="!form1Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de RB (KΩ)</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-water fa-lg"></i></span>
+            <div class="form-floating">
+                <input [(ngModel)]="rc" (click)="desactivarFormulario(1)" [disabled]="!form1Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de RC (KΩ)</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">(β)</span>
+            <div class="form-floating">
+                <input [(ngModel)]="beta" (click)="desactivarFormulario(1)" [disabled]="!form1Habilitado" type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de β</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button [disabled]="!form1Habilitado" (click)="validaValoresForm1(transistor.value)" type="submit" class="btn btn-primary">Calcular</button>
+        </div>
+
+    </div>
+
+    <div class="card" [ngSwitch]="form1Habilitado">
+        <div *ngSwitchCase="true">
+            <img src="../../assets/img/FijaResistencias.PNG" alt="">
+        </div>
+        <div *ngSwitchDefault>
+            <img src="../../assets/img/FijaVoltajes.PNG" alt="">    
+        </div>
+        
+    </div>
+
+    <div class="card">
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
+                    style="color: #3c5786;"></i></span>
+            <div class="form-floating">
+                <input [(ngModel)]="vrb" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de VRB (V)</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
+                    style="color: #3c5786;"></i></span>
+            <div class="form-floating">
+                <input [(ngModel)]="vrc" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de VRC (V)</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
+                    style="color: #3c5786;"></i></span>
+            <div class="form-floating">
+                <input [(ngModel)]="vce" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de VCE (V)</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-bolt"></i></span>
+            <div class="form-floating">
+                <input [(ngModel)]="ib" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de IB (μA)</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-bolt"></i></span>
+            <div class="form-floating">
+                <input [(ngModel)]="ic"(click)="desactivarFormulario(2)" [disabled]="!form2Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de IC ó IE (mA)</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <button [disabled]="!form2Habilitado" (click)="validaValoresForm2(transistor.value)" type="submit" class="btn btn-primary">Calcular</button>
+        </div>
+
+    </div>
+</div>

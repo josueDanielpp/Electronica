@@ -10,6 +10,7 @@ import { DivisorComponent } from './divisor/divisor.component';
 
 import { RealimentacionComponent } from './realimentacion/realimentacion.component';
 import { EmisorComponent } from './emisor/emisor.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EmisorComponent } from './emisor/emisor.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
