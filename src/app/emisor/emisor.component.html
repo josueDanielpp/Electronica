@@ -104,6 +104,33 @@
             <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
                     style="color: #3c5786;"></i></span>
             <div class="form-floating">
+                <input [(ngModel)]="vb" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de VB (V)</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
+                    style="color: #3c5786;"></i></span>
+            <div class="form-floating">
+                <input [(ngModel)]="vc" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de VC (V)</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
+                    style="color: #3c5786;"></i></span>
+            <div class="form-floating">
+                <input [(ngModel)]="ve" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Valor de VE (V)</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
+                    style="color: #3c5786;"></i></span>
+            <div class="form-floating">
                 <input [(ngModel)]="vce" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado"  type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
                 <label for="floatingInputGroup1">Valor de VCE (V)</label>
             </div>
