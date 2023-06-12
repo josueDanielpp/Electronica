@@ -16,7 +16,7 @@ export class EmisorComponent {
   re:number=0;
   beta:number=0;
 
-  // Valores 2do formulario:
+  // Valores 2do formulario:  
   vrb:number=0;
   vrc:number=0;
   vre:number=0;
