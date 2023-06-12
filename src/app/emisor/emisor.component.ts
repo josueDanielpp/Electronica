@@ -20,6 +20,9 @@ export class EmisorComponent {
   vrb:number=0;
   vrc:number=0;
   vre:number=0;
+  vb:number=0;
+  vc:number=0;
+  ve:number=0;
   vce:number=0;
   ib:number=0;
   ic:number=0;
@@ -49,6 +52,9 @@ export class EmisorComponent {
     this.vrb = 0;
     this.vrc = 0;
     this.vre = 0;
+    this.vb = 0;
+    this.vc = 0;
+    this.ve = 0;
     this.vce = 0;
     this.ib = 0;
     this.ic = 0;
@@ -86,6 +92,15 @@ export class EmisorComponent {
     // Calcular VRB
     this.vrb = ((this.rb*1000)*(this.ib/1000000));
 
+    // Calcular VB
+    this.vb = (this.vcc-this.vrb);
+
+    //Calcular VC
+    this.vc = (this.vcc-this.vrc);
+
+    //Calcular VE
+    this.ve = (this.vre);
+
     // Calcular VCE
     this.vce = this.vcc - this.vrc - this.vre;
   }
@@ -98,18 +113,21 @@ export class EmisorComponent {
   }
 
   calcularForm2():void{
+
+    //Calcular VCC
+    this.vcc= Number(this.vrc) + Number(this.vce) + Number(this.vre);
+
     // Calcular RB
-    this.rb = this.vrb/(this.ib/1000000);
+    this.rb = (this.vcc-0.7-this.ve)/(this.ib/1000000);
     this.rb/=1000; // Convertir a Kilo-Ohms
 
     // Calcular RC
-    this.rc = this.vrc/(this.ic/1000);
+    this.rc = (this.vcc-this.vc)/(this.ic/1000);
     this.rc/=1000; // Convertir a Kilo-Ohms
 
-    this.re = this.vre/(this.ie/1000);
+    //Calcular RE
+    this.re = this.ve/(this.ie/1000);
     this.re/=1000;
-
-    this.vcc= Number(this.vrc) + Number(this.vce) + Number(this.vre);
 
     this.beta = (this.ic/1000)/(this.ib/1000000);
   }
