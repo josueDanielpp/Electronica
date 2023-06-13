@@ -65,22 +65,6 @@ export class DivisorComponent {
   }
 
   calcularForm1():void{
-    // // Calcular corriente de IB:
-    // this.ib = (this.vcc-0.7)/(this.rb*1000);
-    // this.ib *=1000000; 
-
-    // // Calcular corriente de IC:
-    // this.ic = this.beta*this.ib;
-    // this.ic /= 1000;
-    // // Calcular VCE
-    // this.vce = this.vcc - (this.rc*this.ic);
-
-    // // Calcular VRC
-    // this.vrc = this.vcc - this.vce;
-
-    // // Calcular VRB
-    // this.vrb = this.vcc - 0.7;
-
     // Calcular resitencia de Thevenin
     this.rth = this.r1 * this.r2 / (Number(this.r1) + Number(this.r2));
     console.log(this.rth);
