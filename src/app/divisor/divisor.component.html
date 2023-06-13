@@ -75,6 +75,30 @@
   </div>
   <div class="card">
     <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fa-solid fa-bolt"></i></span>
+      <div class="form-floating">
+        <input [(ngModel)]="ib" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado" type="text"
+          class="form-control" id="floatingInputGroup1" placeholder="Username">
+        <label for="floatingInputGroup1">Valor de IB (μA)</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fa-solid fa-bolt"></i></span>
+      <div class="form-floating">
+        <input [(ngModel)]="ic" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado" type="text"
+          class="form-control" id="floatingInputGroup1" placeholder="Username">
+        <label for="floatingInputGroup1">Valor de IC (mA)</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fa-solid fa-bolt"></i></span>
+      <div class="form-floating">
+        <input [(ngModel)]="ie" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado" type="text"
+          class="form-control" id="floatingInputGroup1" placeholder="Username">
+        <label for="floatingInputGroup1">Valor de IE (mA)</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
       <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
           style="color: #3c5786;"></i></span>
       <div class="form-floating">
@@ -105,6 +129,49 @@
       <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
           style="color: #3c5786;"></i></span>
       <div class="form-floating">
+        <input [(ngModel)]="vc" (click)="desactivarFormulario(2)" disabled type="text"
+          class="form-control" id="floatingInputGroup1" placeholder="Username">
+        <label for="floatingInputGroup1">Valor de VC (V)</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
+          style="color: #3c5786;"></i></span>
+      <div class="form-floating">
+        <input [(ngModel)]="vb" (click)="desactivarFormulario(2)" disabled type="text"
+          class="form-control" id="floatingInputGroup1" placeholder="Username">
+        <label for="floatingInputGroup1">Valor de VB (V)</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
+          style="color: #3c5786;"></i></span>
+      <div class="form-floating">
+        <input [(ngModel)]="ve" (click)="desactivarFormulario(2)" disabled type="text"
+          class="form-control" id="floatingInputGroup1" placeholder="Username">
+        <label for="floatingInputGroup1">Valor de VE (V)</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fa-solid fa-bolt"></i></span>
+      <div class="form-floating">
+        <input [(ngModel)]="ir1" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado" type="text"
+          class="form-control" id="floatingInputGroup1" placeholder="Username">
+        <label for="floatingInputGroup1">Valor de IR1 (μA)</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fa-solid fa-bolt"></i></span>
+      <div class="form-floating">
+        <input [(ngModel)]="ir2" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado" type="text"
+          class="form-control" id="floatingInputGroup1" placeholder="Username">
+        <label for="floatingInputGroup1">Valor de IR2 (μA)</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fa-sharp fa-solid fa-car-battery fa-lg"
+          style="color: #3c5786;"></i></span>
+      <div class="form-floating">
         <input [(ngModel)]="vr1" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado" type="text"
           class="form-control" id="floatingInputGroup1" placeholder="Username">
         <label for="floatingInputGroup1">Valor de VR1 (V)</label>
@@ -117,30 +184,6 @@
         <input [(ngModel)]="vr2" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado" type="text"
           class="form-control" id="floatingInputGroup1" placeholder="Username">
         <label for="floatingInputGroup1">Valor de VR2 (V)</label>
-      </div>
-    </div>
-    <div class="input-group mb-3">
-      <span class="input-group-text"><i class="fa-solid fa-bolt"></i></span>
-      <div class="form-floating">
-        <input [(ngModel)]="ib" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado" type="text"
-          class="form-control" id="floatingInputGroup1" placeholder="Username">
-        <label for="floatingInputGroup1">Valor de IB (μA)</label>
-      </div>
-    </div>
-    <div class="input-group mb-3">
-      <span class="input-group-text"><i class="fa-solid fa-bolt"></i></span>
-      <div class="form-floating">
-        <input [(ngModel)]="ic" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado" type="text"
-          class="form-control" id="floatingInputGroup1" placeholder="Username">
-        <label for="floatingInputGroup1">Valor de IC (mA)</label>
-      </div>
-    </div>
-    <div class="input-group mb-3">
-      <span class="input-group-text"><i class="fa-solid fa-bolt"></i></span>
-      <div class="form-floating">
-        <input [(ngModel)]="ie" (click)="desactivarFormulario(2)" [disabled]="!form2Habilitado" type="text"
-          class="form-control" id="floatingInputGroup1" placeholder="Username">
-        <label for="floatingInputGroup1">Valor de IE (mA)</label>
       </div>
     </div>
     <div class="col-12">

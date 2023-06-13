@@ -17,6 +17,7 @@ export class DivisorComponent {
   beta: number = 0;
   rth: number = 0;
   vth: number = 0;
+  vrb: number = 0;
 
   // Valores 2do formulario:
   vre: number = 0;
@@ -27,6 +28,11 @@ export class DivisorComponent {
   ib: number = 0;
   ic: number = 0;
   ie: number = 0;
+  ir1: number = 0;
+  ir2: number = 0;
+  vc: number = 0;
+  vb: number = 0;
+  ve: number = 0;
 
   desactivarFormulario(form:number):void{
     // Si dio clic al formulario 1 se desactiva el 2do formulario
@@ -49,6 +55,9 @@ export class DivisorComponent {
     this.r1 = 0;
     this.r2 = 0;
     this.beta = 0;
+    this.rth = 0;
+    this.vth = 0;
+    this.vrb = 0;
 
     this.vre = 0;
     this.vrc = 0;
@@ -56,6 +65,13 @@ export class DivisorComponent {
     this.ib = 0;
     this.ic = 0;
     this.ie = 0;
+    this.vr1 = 0;
+    this.vr2 = 0;
+    this.ir1 = 0;
+    this.ir2 = 0;
+    this.vc = 0;
+    this.vb = 0;
+    this.ve = 0;
   }
 
   validaValoresForm1(transistor:string):void{
@@ -92,6 +108,30 @@ export class DivisorComponent {
 
     // Calcular Voltaje VCE
     this.vce = this.vcc - this.vrc - this.vre;
+
+    // Calcular Voltaje VC
+    this.vc = this.vcc - this.vrc;
+
+    // Calcular Voltaje VE
+    this.ve = this.vre;
+
+    // Calcular Voltaje VRB
+    this.vrb = this.rth * this.ib / 1000;
+
+    // Calcular Voltaje VB
+    this.vb = this.vth - this.vrb;
+
+    // Calculo Corriente IR2
+    this.ir2 = this.vb / this.r2 * 1000;
+
+    // Calcular Corriente IR2
+    this.ir1 = this.ir2 - this.ib;
+
+    // Calcular Volateje VR1
+    this.vr1 = this.ir1 * this.r1 / 1000;
+
+    // Calcular Volateje VR2
+    this.vr2 = this.ir2 * this.r2 / 1000;
   }
 
 
@@ -102,20 +142,22 @@ export class DivisorComponent {
   }
 
   calcularForm2():void{
-    // // Calcular RB
-    // this.rb = this.vrb/(this.ib/1000000); 
-    // this.rb/=1000; // Convertir a Kilo-Ohms
-    // console.log(this.rb);
+    // Calcular Resistencia RC
+    this.rc = this.vrc / this.ic;
 
-    // // Calcular RC
-    // this.rc = this.vrc/(this.ic/1000);
-    // this.rc /= 1000; // Convertir a Kilo-Ohms
-    // console.log(this.rc);
+    // Calcular Resistencia RE
+    this.re = this.vre / this.ie;
+    
+    // Calcular Resistencia R1
+    this.r1 = this.vr1 / this.ir1 * 1000;
+    
+    // Calcular Resistencia R1
+    this.r2 = this.vr2 / this.ir2 * 1000;
 
-    // this.vcc = Number(this.vrc) + Number(this.vce);
-    // console.log(this.vcc);
+    // Calcular Beta
+    this.beta = this.ic / this.ib * 1000;
 
-    // this.beta = (this.ic/1000)/(this.ib/1000000);
-    // console.log(this.beta);
+    // Calcular Voltaje VCC
+    this.vcc = Number(this.vce) + Number(this.vrc) + Number(this.vre);
   }
 }
