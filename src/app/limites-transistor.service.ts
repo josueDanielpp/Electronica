@@ -8,19 +8,19 @@ export class LimitesTransistorService {
 
 
   constructor() { }
-  error(icmax:number,vemax:number){
+  error(icmax:number,vemax:number,ic:number,vce:number){
     Swal.fire({
       icon: 'error',
       title: 'Los valores no son apropiados',
-      text: 'la ic maxima es '+icmax+" mA el voltaje colector-emisor: "+vemax+" V",
+      text: 'la ic maxima es '+icmax+" mA el voltaje colector-emisor: "+vemax+" V"+" la ic es"+ic+"mA la y el vce es: "+vce,
       footer: 'comprueba los datos :('
     })
   }
-  errorbeta(betamax:number,betamin:number){
+  errorbeta(betamax:number,betamin:number,beta:number){
     Swal.fire({
       icon: 'error',
       title: 'El valor de beta no es apropiado',
-      text: 'el valor maximo de beta es: '+betamax+" el valor minimo es de "+betamin,
+      text: 'el valor maximo de beta es: '+betamax+" el valor minimo es de "+betamin +" el valor es :"+beta ,
       footer: 'comprueba los datos :('
     })
   }
@@ -32,7 +32,7 @@ export class LimitesTransistorService {
         
         return true;
       }else{
-        this.error(600,30)  
+        this.error(600,30,valores.ic,valores.vce)  
         console.log("adioz")
         // Si no cumple con condición
         return false;
@@ -47,7 +47,7 @@ export class LimitesTransistorService {
        
         return true;
       }
-      this.error(10000,40)  
+      this.error(10000,40,valores.ic,valores.vce)  
 
       // Si no cumple con condición
       return false;
@@ -59,7 +59,7 @@ export class LimitesTransistorService {
         
         return true;
       }
-      this.error(100,45)
+      this.error(100,45,valores.ic,valores.vce)
         
 
       // Si no cumple con condición
@@ -75,7 +75,7 @@ export class LimitesTransistorService {
         
         return true;
       } 
-      this.errorbeta(300,75);
+      this.errorbeta(300,75,beta);
       console.log(beta);
       return false;
     }
@@ -85,7 +85,7 @@ export class LimitesTransistorService {
         
         return true;
       }
-      this.errorbeta(75,15);
+      this.errorbeta(75,15,beta);
       return false;
     }
     // Validaciones para BC547
@@ -94,7 +94,7 @@ export class LimitesTransistorService {
         
         return true;
       }
-      this.errorbeta(800,110);
+      this.errorbeta(800,110,beta);
       
       return false;
     }

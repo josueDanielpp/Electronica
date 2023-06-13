@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LimitesTransistorService } from '../limites-transistor.service';
 
 @Component({
   selector: 'app-divisor',
@@ -33,7 +34,7 @@ export class DivisorComponent {
   vc: number = 0;
   vb: number = 0;
   ve: number = 0;
-
+  constructor(private limitesTransistor:LimitesTransistorService){}
   desactivarFormulario(form:number):void{
     // Si dio clic al formulario 1 se desactiva el 2do formulario
     if(form == 1){
@@ -75,9 +76,28 @@ export class DivisorComponent {
   }
 
   validaValoresForm1(transistor:string):void{
-    // Faltan Validaciones para cada transistor
+    // Si cumple con valores reales de Beta
+    if(this.limitesTransistor.validaLimitesBeta(transistor, this.beta)){
 
-    this.calcularForm1();
+      this.calcularForm1();
+      console.log(this.vce);
+      let valores = {ib:this.ib,ic:this.ic,vce:this.vce};
+      
+      // Si no se cumplen límites de corrientes y voltajes
+      if(!this.limitesTransistor.validaValoresForm1(transistor,valores)){
+        console.log("VALORES NO CUMPLEN .l.");
+        this.vrb = 0;
+        this.vrc = 0;
+        this.vce = 0;
+        this.ib = 0;
+        this.ic = 0;
+      }
+      // Si se cumplen aparecen valores en input
+    }
+    // No cumple con valores reales de Beta
+    else{
+      console.log("BETA NO CUMPLE .l.")
+    }
   }
 
   calcularForm1():void{
@@ -136,9 +156,24 @@ export class DivisorComponent {
 
 
   validaValoresForm2(transistor:string):void{
-    // Faltan Validaciones para cada transistor
-    
     this.calcularForm2();
+      let valores = {ib:this.ib,ic:this.ic,vce:this.vce};
+      
+      // Si no se cumplen límites de corrientes y voltajes
+      if(!this.limitesTransistor.validaValoresForm1(transistor,valores)){
+        console.log("VALORES NO CUMPLEN .l.");
+         this.vcc=0;
+         this.rc=0;
+         this.beta=0;
+      }
+      if(this.vcc > 0 && !this.limitesTransistor.validaLimitesBeta(transistor,this.beta)){
+
+      // Si no se cumplen límites de beta
+        console.log("VALORES NO CUMPLEN .l.");
+        this.vcc = 0;
+        this.rc = 0;
+        this.beta = 0;
+      }
   }
 
   calcularForm2():void{
