@@ -9,6 +9,8 @@ export class EmisorComponent {
   
   form1Habilitado:boolean = true;
   form2Habilitado:boolean = true;
+  quitar:boolean=false;
+
   // Valores 1er formulario:
   vcc:number=0;
   rb:number=0;
@@ -36,6 +38,7 @@ export class EmisorComponent {
     }
     else{ // Si dio clic al formulario 2 se desactiva el 1er formulario
       this.form1Habilitado = false;
+      this.quitar=true;
     }
     
   }
@@ -118,15 +121,15 @@ export class EmisorComponent {
     this.vcc= Number(this.vrc) + Number(this.vce) + Number(this.vre);
 
     // Calcular RB
-    this.rb = (this.vcc-0.7-this.ve)/(this.ib/1000000);
+    this.rb = (this.vrb)/(this.ib/1000000);
     this.rb/=1000; // Convertir a Kilo-Ohms
 
     // Calcular RC
-    this.rc = (this.vcc-this.vc)/(this.ic/1000);
+    this.rc = (this.vrc)/(this.ic/1000);
     this.rc/=1000; // Convertir a Kilo-Ohms
 
     //Calcular RE
-    this.re = this.ve/(this.ie/1000);
+    this.re = this.vre/(this.ie/1000);
     this.re/=1000;
 
     this.beta = (this.ic/1000)/(this.ib/1000000);

@@ -21,7 +21,7 @@ export class FijaComponent {
   // Valores 2do formulario:
   vrb!:number;
   vrc!:number;
-  vce!:number;
+  vce:number=0;
   ib!:number;
   ic!:number;
 
@@ -59,6 +59,7 @@ export class FijaComponent {
     if(this.limitesTransistor.validaLimitesBeta(transistor, this.beta)){
 
       this.calcularForm1();
+      console.log(this.vce);
       let valores = {ib:this.ib,ic:this.ic,vce:this.vce};
       
       // Si no se cumplen límites de corrientes y voltajes
@@ -103,6 +104,16 @@ export class FijaComponent {
   validaValoresForm2(transistor:string):void{
     
       this.calcularForm2();
+      let valores = {ib:this.ib,ic:this.ic,vce:this.vce};
+      
+      // Si no se cumplen límites de corrientes y voltajes
+      if(!this.limitesTransistor.validaValoresForm1(transistor,valores)){
+        console.log("VALORES NO CUMPLEN .l.");
+         this.vcc=0;
+         this.rb=0;
+         this.rc=0;
+         this.beta=0;
+      }
       if(this.vcc > 0 && !this.limitesTransistor.validaLimitesBeta(transistor,this.beta)){
 
       // Si no se cumplen límites de beta
